@@ -444,6 +444,7 @@ h6 {
 .app__section-task-list-item-complete.app__section-task-list-item {
   background: var(--fundo-card-concludo);
   cursor: inherit;
+  
 }
 
 .app__section-task-list-item-active.app__section-task-list-item {

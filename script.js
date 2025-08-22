@@ -14,15 +14,13 @@ const startPauseBt = document.querySelector("#start-pause");
 const nameButton = document.querySelector("#start-pause span");
 const iconeBtn = document.querySelector(".app__card-primary-butto-icon");
 const tempoNaTela = document.querySelector("#timer");
-console.log(iconeBtn);
 musica.loop = true;
 
-let tempoDecorridoEmSegundos = 1500;
+let tempoDecorridoEmSegundos = 10;
 let intervaloId = null;
 
 musicaFocoInput.addEventListener("change", () => {
   if (musica.paused) {
-    console.log;
     musica.play();
   } else {
     musica.pause();
@@ -80,6 +78,11 @@ const contagemRegressiva = () => {
   if (tempoDecorridoEmSegundos <= 0) {
     musicaFim.play();
     alert("Tempo finalizado");
+    const focoAtivo = html.getAttribute("data-contexto") == "foco";
+    if (focoAtivo) {
+      const evento = new CustomEvent("FocoFinalizado");
+      document.dispatchEvent(evento);
+    }
     zerar();
     return;
   }
